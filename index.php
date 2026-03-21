@@ -32,7 +32,7 @@
     print('Выберите пол.<br/>');
     $errors = TRUE;
     }
-    if (empty($_POST['lang_ id'])) {
+    if (empty($_POST['lang_id'])) {
     print('Выберите язык программирования.<br/>');
     $errors = TRUE;
     }
