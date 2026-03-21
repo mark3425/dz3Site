@@ -62,7 +62,7 @@
             ':gender' => $_POST['gender'],
             ':bio' => $_POST['bio'],
             ':contract' => isset($_POST['contract']) ? 1 : 0  ,
-            ':lang_id' => $_POST['lang_id']
+            ':lang_id[]' => $_POST['lang_id']
         ]);
     }
     catch(PDOException $e){
