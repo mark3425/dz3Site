@@ -1,0 +1,22 @@
+body{
+background-color: aquamarine;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+form{
+display: flex;
+flex-direction: column;
+align-items: center;
+background-color: beige;
+width:max-content;
+padding:20px;
+border-radius: 12px;
+gap:20px;
+}
+
+#contr{
+    display: flex;
+    flex-direction: row;
+
+}
