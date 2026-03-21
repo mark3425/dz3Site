@@ -64,17 +64,16 @@
     [PDO::ATTR_PERSISTENT => true, PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
 
     try {
-    $stmt = $db->prepare("INSERT INTO users (fio,phone,email,brithDate,gender,bio,contract,lang_id[]) VALUES (:fio,:phone,:email,:brithDate,:gender,:bio,:contract,:lang_id[])");
-    $stmt->execute([
-            ':fio' => $_POST['fio'],
-            ':phone' => $_POST['phone'],
-            ':email' => $_POST['email'],
-            ':brithDate' => $_POST['birthDate'],
-            ':gender' => $_POST['gender'],
-            ':bio' => $_POST['bio'],
-            ':contract' => isset($_POST['contract']) ? 1 : 0  ,
-            ':lang_id[]' => $_POST['lang_id[]']
-        ]);
+    $stmt = $db->prepare("INSERT INTO users (fio, phone, email, brithDate, gender, bio, contract) 
+                      VALUES (:fio, :phone, :email, :brithDate, :gender, :bio, :contract)");
+$stmt->execute([...]);
+$user_id = $db->lastInsertId();
+
+// Сохраняем языки
+$stmt = $db->prepare("INSERT INTO user_languages (user_id, lang_id) VALUES (:user_id, :lang_id)");
+foreach ($_POST['lang_id'] as $lang_id) {
+    $stmt->execute([':user_id' => $user_id, ':lang_id' => $lang_id]);
+}
     }
     catch(PDOException $e){
     print('Error : ' . $e->getMessage());
