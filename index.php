@@ -15,27 +15,38 @@
     print('Заполните имя.<br/>');
     $errors = TRUE;
     }
-    if (strlen($_POST['fio'])>150) {
-    print('Заполните имя.<br/>');
+    elseif (strlen($_POST['fio'])>150) {
+    print('Слишком много символов.<br/>');
     $errors = TRUE;
     }
+
     if (empty($_POST['phone'])) {
     print('Заполните номер телефона.<br/>');
     $errors = TRUE;
     }
+    elseif (!preg_match('/^\+?\d+$/', $_POST['phone'])) {
+    print('Номер телефона должен содержать только цифры и может начинаться с +.<br/>');
+    $errors = TRUE;
+}
     if (empty($_POST['email'])) {
     print('Заполните почту.<br/>');
     $errors = TRUE;
     }
+    elseif (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+    print('Введите корректный email адрес.<br/>');
+    $errors = TRUE;
+}
 
     if (empty($_POST['brithDate'])) {
     print('Заполните Дату рождения.<br/>');
     $errors = TRUE;
     }
+
     if (empty($_POST['gender'])) {
     print('Выберите пол.<br/>');
     $errors = TRUE;
     }
+    
     if (empty($_POST['lang_id'])) {
     print('Выберите язык программирования.<br/>');
     $errors = TRUE;
