@@ -13,7 +13,7 @@
         <input type="radio" name="gender" value="female">Женский</input>
     </label>
     <label>Любимый язык программирования: 
-<select name ="lang_id">
+<select name ="lang_id[]" multiple size="5">
     <option value="1">Pascal</option>
     <option value="2">C</option>
     <option value="3">C++</option>

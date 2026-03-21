@@ -15,6 +15,10 @@
     print('Заполните имя.<br/>');
     $errors = TRUE;
     }
+    if (strlen($_POST['fio'])>150) {
+    print('Заполните имя.<br/>');
+    $errors = TRUE;
+    }
     if (empty($_POST['phone'])) {
     print('Заполните номер телефона.<br/>');
     $errors = TRUE;
@@ -32,7 +36,7 @@
     print('Выберите пол.<br/>');
     $errors = TRUE;
     }
-    if (empty($_POST['lang_id'])) {
+    if (empty($_POST['lang_id[]'])) {
     print('Выберите язык программирования.<br/>');
     $errors = TRUE;
     }
@@ -49,7 +53,7 @@
     [PDO::ATTR_PERSISTENT => true, PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
 
     try {
-    $stmt = $db->prepare("INSERT INTO users (fio,phone,email,brithDate,gender,bio,contract,lang_id) VALUES (:fio,:phone,:email,:brithDate,:gender,:bio,:contract,:lang_id)");
+    $stmt = $db->prepare("INSERT INTO users (fio,phone,email,brithDate,gender,bio,contract,lang_id[]) VALUES (:fio,:phone,:email,:brithDate,:gender,:bio,:contract,:lang_id[])");
     $stmt->execute([
             ':fio' => $_POST['fio'],
             ':phone' => $_POST['phone'],
@@ -58,7 +62,7 @@
             ':gender' => $_POST['gender'],
             ':bio' => $_POST['bio'],
             ':contract' => isset($_POST['contract']) ? 1 : 0  ,
-            ':lang_id' => $_POST['lang_id']
+            ':lang_id' => $_POST['lang_id[]']
         ]);
     }
     catch(PDOException $e){
