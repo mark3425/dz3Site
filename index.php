@@ -19,7 +19,10 @@
     print('Слишком много символов.<br/>');
     $errors = TRUE;
     }
-
+    elseif (!preg_match('/^[a-zA-Zа-яА-ЯёЁ\s-]+$/u', $name)) {
+      print('ФИО должно содержать только буквы, пробелы и дефисы<br/>');
+    $errors = TRUE;   
+    }
     if (empty($_POST['phone'])) {
     print('Заполните номер телефона.<br/>');
     $errors = TRUE;
@@ -71,7 +74,7 @@
         ':phone' => $_POST['phone'],
         ':email' => $_POST['email'],
         ':brithDate' => $_POST['brithDate'],
-        ':gender' => $_POST['gender'],
+        ':gender' => $_POST['gender'],  
         ':bio' => $_POST['bio'],
         ':contract' => isset($_POST['contract']) ? 1 : 0
     ]);
