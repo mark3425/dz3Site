@@ -19,7 +19,7 @@
     print('Слишком много символов.<br/>');
     $errors = TRUE;
     }
-    elseif (!preg_match('/^[a-zA-Zа-яА-ЯёЁ\s-]+$/u', $name)) {
+    elseif (!preg_match('/^[a-zA-Zа-яА-ЯёЁ\s-]+$/u', $_POST['fio'])) {
       print('ФИО должно содержать только буквы, пробелы и дефисы<br/>');
     $errors = TRUE;   
     }
