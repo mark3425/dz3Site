@@ -1,22 +1,41 @@
-body{
-background-color: aquamarine;
-display: flex;
-align-items: center;
-justify-content: center;
-}
-form{
-display: flex;
-flex-direction: column;
-align-items: center;
-background-color: beige;
-width:max-content;
-padding:20px;
-border-radius: 12px;
-gap:20px;
-}
-
-#contr{
+body {
+    background-color: aquamarine;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    align-items: center;
+}
 
+form {
+    display: flex;
+    flex-direction: column;
+    background-color: beige;
+    padding: 20px;
+    border-radius: 12px;
+    gap: 15px;
+}
+
+label {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+input, select, textarea {
+    padding: 5px;
+}
+
+button {
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.error-messages {
+    background-color: #ffebee;
+    border: 1px solid red;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
 }
